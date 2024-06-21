@@ -1,0 +1,84 @@
+Jun-21 14:32:25.542 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf
+Jun-21 14:32:25.592 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 23.04.3
+Jun-21 14:32:25.604 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/Users/josesho/.nextflow/plugins; core-plugins: nf-amazon@1.16.2,nf-azure@1.0.1,nf-codecommit@0.1.4,nf-console@1.0.5,nf-ga4gh@1.0.5,nf-google@1.7.3,nf-tower@1.5.12,nf-wave@0.8.4
+Jun-21 14:32:25.611 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jun-21 14:32:25.611 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jun-21 14:32:25.613 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jun-21 14:32:25.618 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jun-21 14:32:25.629 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /Users/josesho/Library/CloudStorage/GoogleDrive-joseshowh@gmail.com/My Drive/temus-gwas-case-study/nextflow.config
+Jun-21 14:32:25.629 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/josesho/Library/CloudStorage/GoogleDrive-joseshowh@gmail.com/My Drive/temus-gwas-case-study/nextflow.config
+Jun-21 14:32:25.644 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jun-21 14:32:25.937 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declararion
+Jun-21 14:32:25.949 [main] INFO  nextflow.cli.CmdRun - Launching `main.nf` [extravagant_church] DSL2 - revision: e84bd6df8d
+Jun-21 14:32:25.949 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jun-21 14:32:25.949 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jun-21 14:32:25.955 [main] DEBUG nextflow.secret.LocalSecretsProvider - Secrets store: /Users/josesho/.nextflow/secrets/store.json
+Jun-21 14:32:25.957 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@5fcfde70] - activable => nextflow.secret.LocalSecretsProvider@5fcfde70
+Jun-21 14:32:25.984 [main] DEBUG nextflow.Session - Session UUID: 3b3d3d25-8e24-4c9a-b698-65b71b1e6145
+Jun-21 14:32:25.984 [main] DEBUG nextflow.Session - Run name: extravagant_church
+Jun-21 14:32:25.985 [main] DEBUG nextflow.Session - Executor pool size: 10
+Jun-21 14:32:25.990 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=30; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jun-21 14:32:26.028 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 23.04.3 build 5875
+  Created: 11-08-2023 18:37 UTC (12-08-2023 02:37 SGST)
+  System: Mac OS X 14.4.1
+  Runtime: Groovy 3.0.16 on OpenJDK 64-Bit Server VM 20.0.2
+  Encoding: UTF-8 (UTF-8)
+  Process: 10952@Josess-MBP [192.168.50.248]
+  CPUs: 10 - Mem: 32 GB (368.2 MB) - Swap: 0 (0)
+Jun-21 14:32:26.037 [main] DEBUG nextflow.Session - Work-dir: /Users/josesho/Library/CloudStorage/GoogleDrive-joseshowh@gmail.com/My Drive/temus-gwas-case-study/work [Mac OS X]
+Jun-21 14:32:26.046 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jun-21 14:32:26.051 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jun-21 14:32:26.064 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jun-21 14:32:26.068 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 11; maxThreads: 1000
+Jun-21 14:32:26.108 [main] DEBUG nextflow.Session - Session start
+Jun-21 14:32:26.248 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jun-21 14:32:26.299 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Jun-21 14:32:26.300 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-21 14:32:26.303 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jun-21 14:32:26.306 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=10; memory=32 GB; capacity=10; pollInterval=100ms; dumpInterval=5m
+Jun-21 14:32:26.365 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Jun-21 14:32:26.365 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-21 14:32:26.366 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: qc, splitByEthnicity
+Jun-21 14:32:26.367 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
+Jun-21 14:32:26.367 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > qc
+Jun-21 14:32:26.368 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > splitByEthnicity
+Jun-21 14:32:26.368 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jun-21 14:32:26.368 [main] DEBUG nextflow.Session - Session await
+Jun-21 14:32:26.455 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jun-21 14:32:26.457 [Task submitter] INFO  nextflow.Session - [fe/e71009] Submitted process > qc (quality_control)
+Jun-21 14:32:26.461 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jun-21 14:32:26.461 [Task submitter] INFO  nextflow.Session - [64/5d2cb6] Submitted process > splitByEthnicity (split_by_ethnicity)
+Jun-21 14:32:26.566 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: qc (quality_control); status: COMPLETED; exit: 127; error: -; workDir: /Users/josesho/Library/CloudStorage/GoogleDrive-joseshowh@gmail.com/My Drive/temus-gwas-case-study/work/fe/e71009afaf67c4ca0a275f21477931]
+Jun-21 14:32:26.568 [Task monitor] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=qc (quality_control); work-dir=/Users/josesho/Library/CloudStorage/GoogleDrive-joseshowh@gmail.com/My Drive/temus-gwas-case-study/work/fe/e71009afaf67c4ca0a275f21477931
+  error [nextflow.exception.ProcessFailedException]: Process `qc (quality_control)` terminated with an error exit status (127)
+Jun-21 14:32:26.576 [Task monitor] ERROR nextflow.processor.TaskProcessor - Error executing process > 'qc (quality_control)'
+
+Caused by:
+  Process `qc (quality_control)` terminated with an error exit status (127)
+
+Command executed:
+
+  bash bin/qc.sh 100000_variants_10000_samples_5_chromosomes.bed
+
+Command exit status:
+  127
+
+Command output:
+  (empty)
+
+Command error:
+  bash: bin/qc.sh: No such file or directory
+
+Work dir:
+  /Users/josesho/Library/CloudStorage/GoogleDrive-joseshowh@gmail.com/My Drive/temus-gwas-case-study/work/fe/e71009afaf67c4ca0a275f21477931
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+Jun-21 14:32:26.579 [Task monitor] DEBUG nextflow.Session - Session aborted -- Cause: Process `qc (quality_control)` terminated with an error exit status (127)
+Jun-21 14:32:26.588 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jun-21 14:32:26.588 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jun-21 14:32:26.591 [main] WARN  n.processor.TaskPollingMonitor - Killing running tasks (1)
+Jun-21 14:32:26.598 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=136ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=8; peakMemory=16 GB; ]
+Jun-21 14:32:26.792 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jun-21 14:32:26.802 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

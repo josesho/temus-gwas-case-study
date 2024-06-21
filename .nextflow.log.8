@@ -1,0 +1,79 @@
+Jun-21 14:23:53.185 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf
+Jun-21 14:23:53.228 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 23.04.3
+Jun-21 14:23:53.239 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/Users/josesho/.nextflow/plugins; core-plugins: nf-amazon@1.16.2,nf-azure@1.0.1,nf-codecommit@0.1.4,nf-console@1.0.5,nf-ga4gh@1.0.5,nf-google@1.7.3,nf-tower@1.5.12,nf-wave@0.8.4
+Jun-21 14:23:53.245 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jun-21 14:23:53.245 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jun-21 14:23:53.247 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jun-21 14:23:53.252 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jun-21 14:23:53.264 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /Users/josesho/Library/CloudStorage/GoogleDrive-joseshowh@gmail.com/My Drive/temus-gwas-case-study/nextflow.config
+Jun-21 14:23:53.264 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/josesho/Library/CloudStorage/GoogleDrive-joseshowh@gmail.com/My Drive/temus-gwas-case-study/nextflow.config
+Jun-21 14:23:53.277 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jun-21 14:23:53.556 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declararion
+Jun-21 14:23:53.568 [main] INFO  nextflow.cli.CmdRun - Launching `main.nf` [kickass_jennings] DSL2 - revision: 6435d0de24
+Jun-21 14:23:53.568 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jun-21 14:23:53.568 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jun-21 14:23:53.573 [main] DEBUG nextflow.secret.LocalSecretsProvider - Secrets store: /Users/josesho/.nextflow/secrets/store.json
+Jun-21 14:23:53.575 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@7fe82967] - activable => nextflow.secret.LocalSecretsProvider@7fe82967
+Jun-21 14:23:53.601 [main] DEBUG nextflow.Session - Session UUID: c51d0db4-4cfb-4bcf-a1fe-3dd48a3e0f55
+Jun-21 14:23:53.601 [main] DEBUG nextflow.Session - Run name: kickass_jennings
+Jun-21 14:23:53.601 [main] DEBUG nextflow.Session - Executor pool size: 10
+Jun-21 14:23:53.606 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=30; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jun-21 14:23:53.667 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 23.04.3 build 5875
+  Created: 11-08-2023 18:37 UTC (12-08-2023 02:37 SGST)
+  System: Mac OS X 14.4.1
+  Runtime: Groovy 3.0.16 on OpenJDK 64-Bit Server VM 20.0.2
+  Encoding: UTF-8 (UTF-8)
+  Process: 10625@Josess-MBP [192.168.50.248]
+  CPUs: 10 - Mem: 32 GB (150.7 MB) - Swap: 0 (0)
+Jun-21 14:23:53.676 [main] DEBUG nextflow.Session - Work-dir: /Users/josesho/Library/CloudStorage/GoogleDrive-joseshowh@gmail.com/My Drive/temus-gwas-case-study/work [Mac OS X]
+Jun-21 14:23:53.685 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jun-21 14:23:53.689 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jun-21 14:23:53.702 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jun-21 14:23:53.708 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 11; maxThreads: 1000
+Jun-21 14:23:53.742 [main] DEBUG nextflow.Session - Session start
+Jun-21 14:23:53.854 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jun-21 14:23:53.902 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Jun-21 14:23:53.902 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-21 14:23:53.905 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jun-21 14:23:53.908 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=10; memory=32 GB; capacity=10; pollInterval=100ms; dumpInterval=5m
+Jun-21 14:23:53.962 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Jun-21 14:23:53.963 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-21 14:23:53.964 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: qc, splitByEthnicity
+Jun-21 14:23:53.965 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
+Jun-21 14:23:53.965 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > qc
+Jun-21 14:23:53.965 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > splitByEthnicity
+Jun-21 14:23:53.965 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jun-21 14:23:53.965 [main] DEBUG nextflow.Session - Session await
+Jun-21 14:23:53.999 [Actor Thread 6] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=splitByEthnicity; work-dir=null
+  error [nextflow.exception.ProcessUnrecoverableException]: Not a valid path value: '../data/samples.txt'
+Jun-21 14:23:53.999 [Actor Thread 5] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=qc; work-dir=null
+  error [nextflow.exception.ProcessUnrecoverableException]: Not a valid path value: '../data/100000_variants_10000_samples_5_chromosomes.bed'
+Jun-21 14:23:54.002 [Actor Thread 1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=qc; work-dir=null
+  error [java.lang.InterruptedException]: java.lang.InterruptedException
+Jun-21 14:23:54.007 [Actor Thread 6] ERROR nextflow.processor.TaskProcessor - Error executing process > 'splitByEthnicity'
+
+Caused by:
+  Not a valid path value: '../data/samples.txt'
+
+
+Tip: when you have fixed the problem you can continue the execution adding the option `-resume` to the run command line
+Jun-21 14:23:54.009 [Actor Thread 6] DEBUG nextflow.Session - Session aborted -- Cause: Not a valid path value: '../data/samples.txt'
+Jun-21 14:23:54.018 [Actor Thread 6] DEBUG nextflow.Session - The following nodes are still active:
+[process] splitByEthnicity
+  status=ACTIVE
+  port 0: (value) bound ; channel: prefix
+  port 1: (value) bound ; channel: samples
+  port 2: (cntrl) -     ; channel: $
+
+Jun-21 14:23:54.019 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jun-21 14:23:54.019 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jun-21 14:23:54.019 [Actor Thread 2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=splitByEthnicity; work-dir=null
+  error [java.lang.InterruptedException]: java.lang.InterruptedException
+Jun-21 14:23:54.022 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=0; peakCpus=0; peakMemory=0; ]
+Jun-21 14:23:54.221 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jun-21 14:23:54.230 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

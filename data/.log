@@ -1,0 +1,15 @@
+PLINK v1.90b7.2 64-bit (11 Dec 2023)
+Options in effect:
+  --bfile ../data/100000_variants_10000_samples_5_chromosomes
+  --keep
+  --make-bed
+  --out ../data/
+
+Hostname: Josess-MBP
+Working directory: /Users/josesho/Library/CloudStorage/GoogleDrive-joseshowh@gmail.com/My Drive/temus-gwas-case-study/bin
+Start time: Fri Jun 21 13:19:47 2024
+
+Error: Missing --keep parameter.
+For more information, try "plink --help <flag name>" or "plink --help | more".
+
+End time: Fri Jun 21 13:19:47 2024

@@ -11,18 +11,16 @@ process qc {
     tag 'quality_control'
 
     input:
-    val fullPath
-    val prefix
     path bed
-    //path bim
-    //path fam
+    path bim
+    path fam
 
     output:
-    path "output/${prefix}_qc*.{bed,bim,fam}"
+    path "output/*.{bed,bim,fam}"
 
-    script:
+    shell:
     """
-    bash ${fullPath}bin/qc.sh ${bed}
+    bash !{params.fullPath}bin/qc.sh !{bed} !{bim} !{fam}
     """
 }
 
@@ -30,22 +28,21 @@ process splitByEthnicity {
     tag 'split_by_ethnicity'
 
     input:
-    val fullPath
     val prefix
     path samples
 
     output:
-    path "output/*"
+    path "*"
 
     script:
     """
-    bash ${fullPath}bin/split_by_ethnicity.sh ${samples} "${fullPath}output/${prefix}_qc.bed"
+    bash ./bin/split_by_ethnicity.sh {samples} "${prefix}_qc.bed"
     """
 }
 
 workflow {
-    qc(params.fullPath, params.prefix, params.bed)
-    splitByEthnicity(params.fullPath, params.prefix, params.samples)
+    qc(params.bed, params.bim, params.fam)
+    //splitByEthnicity(params.prefix, params.samples)
 }
 
 

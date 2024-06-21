@@ -2,16 +2,21 @@
 # QC script using PLINK.
 # Written by Joses Ho, 22 June 2024.
 
-# Loads command line argument.
-# Assumes .bed file is accompanied with .bim and .fam files with same filename.
+# Loads command line arguments.
 bed=$1
+bim=$2
+fam=$3
+
+# Assigns all options.
+MIND_CUTOFF=0.05 # Removing samples with missing call rates `--mind`, default 0.1.
+GENO_CUTOFF=0.05 # Removing SNPs with missing call rates, default 0.1.
+MAF_CUTOFF=0.05  # Removing SNPs with minor allele frequency below threshold, default 0.01.
 
 # See https://www.cog-genomics.org/plink/1.9/filter for more options.
-plink \
-    --bfile ${bed%.bed} \
-    --mind 0.05 \ # The default for removing samples with missing call rates `--mind` is 0.1.
-    --geno 0.05 \ # The default for removing SNPs with missing call rates `--geno` is 0.1.
-    --maf 0.01 \  # The default for removing SNPs with minor allele frequency below threshold of 0.01.
-    --hwe 1e-6 \  # Filters out SNPs with Hardy-Weinberg equilibirum p value below this.
-    --make-bed \  # specifies that output will be a PLINK binary file.
-    --out qc_genotypes
+plink --bfile ${bed%.bed}\
+    --mind $MIND_CUTOFF\
+    --geno $GENO_CUTOFF\
+    --maf $MAF_CUTOFF\
+    --allow-no-sex\
+    --make-bed\
+    --out ${bed%.bed}_qc

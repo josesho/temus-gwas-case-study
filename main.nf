@@ -16,7 +16,7 @@ process qc {
     path fam
 
     output:
-    path "output/*.{bed,bim,fam}"
+    path "${params.prefix}_qc*.{bed,bim,fam}"
 
     shell:
     """
@@ -28,21 +28,19 @@ process splitByEthnicity {
     tag 'split_by_ethnicity'
 
     input:
-    val prefix
-    path samples
+    path qc_files
 
     output:
-    path "*"
+    path "${params.prefix}_ethnicity*.{bed,bim,fam}"
 
-    script:
+    shell:
     """
-    bash ./bin/split_by_ethnicity.sh {samples} "${prefix}_qc.bed"
+    bash !{params.fullPath}bin/split_by_ethnicity.sh !{params.samples} ${qc_files[0]} ${qc_files[1]} ${qc_files[2]}
     """
 }
 
 workflow {
-    qc(params.bed, params.bim, params.fam)
-    //splitByEthnicity(params.prefix, params.samples)
+    qc(params.bed, params.bim, params.fam) | collect | splitByEthnicity
 }
 
 

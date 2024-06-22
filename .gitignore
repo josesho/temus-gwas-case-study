@@ -1,4 +1,10 @@
 **/.DS_Store
+*.log
 .nextflow.log*
-work/
+report-*
+timeline-*
+trace-*
+work/*
+output/*
 .nextflow/
+tutorial.nf

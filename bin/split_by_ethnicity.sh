@@ -18,14 +18,15 @@ sed 1d $samples    |                     # remove header
 while read -r ethnicity
 do
     # Use `awk` to create ID lists for each ethnicity.
-    awk -v e="${ethnicity}" '{ if ($2==e) {print $1} } ' samples.txt > ethnicity${ethnicity}_IDs.txt
+    awk -v e="${ethnicity}" '{ if ($2==e) {print $1, $1} }' $samples > ethnicity${ethnicity}_IDs.txt
 
     # and use plink to filter.
     outPrefix=${bed%.bed}_ethnicity$ethnicity
 
     plink --bfile ${bed%.bed}\
-            --keep ethnicity${ethnicity}_IDs.txt\
-            --make-bed\
-            --out ${outPrefix}
+          --keep ethnicity${ethnicity}_IDs.txt\
+          --allow-no-sex\
+          --make-bed\
+          --out ${outPrefix}
 
 done < ${bed%.bed}_unique_ethinicities.txt

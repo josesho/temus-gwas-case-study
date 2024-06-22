@@ -9,6 +9,7 @@ nextflow.enable.dsl=2
 
 process qc {
     tag 'quality_control'
+    publishDir 'output'//, mode: 'copy', overwrite: false
 
     input:
     path bed
@@ -20,28 +21,39 @@ process qc {
 
     shell:
     """
-    bash !{params.fullPath}bin/qc.sh !{bed} !{bim} !{fam}
+    bash !{projectDir}/bin/qc.sh !{bed} !{bim} !{fam}
     """
 }
 
 process splitByEthnicity {
     tag 'split_by_ethnicity'
+    publishDir 'output'//, mode: 'copy', overwrite: false
 
     input:
     path qc_files
 
     output:
-    path "${params.prefix}_ethnicity*.{bed,bim,fam}"
+    path "${params.prefix}_qc_ethnicity*.{bed,bim,fam}"
 
     shell:
     """
-    bash !{params.fullPath}bin/split_by_ethnicity.sh !{params.samples} ${qc_files[0]} ${qc_files[1]} ${qc_files[2]}
+    bash !{projectDir}/bin/split_by_ethnicity.sh !{params.samples} ${qc_files[0]} ${qc_files[1]} ${qc_files[2]}
     """
 }
 
 workflow {
     qc(params.bed, params.bim, params.fam) | collect | splitByEthnicity
 }
+
+workflow.onError {
+    println "Error: Pipeline execution stopped with the following message: ${workflow.errorMessage}"
+}
+
+workflow.onComplete {
+    println "Pipeline completed at: $workflow.complete"
+    println "Execution status: ${ workflow.success ? 'OK' : 'failed' }"
+}
+
 
 
 

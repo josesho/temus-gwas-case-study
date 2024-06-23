@@ -12,7 +12,7 @@ fam=$4
 sed 1d $samples    |                     # remove header
     tr -s ' ' '\t' |                     # replace spaces to tabs
     cut -f2        |                     # pull out the ETHNIC_GROUP field
-    sort -nu > ${bed%.bed}_unique_ethinicities.txt # sort numerically and write to file.
+    sort -nu > ${bed%.bed}_unique_ethnicities.txt # sort numerically and write to file.
 
 # Use plink to filter.
 while read -r ethnicity
@@ -29,4 +29,4 @@ do
           --make-bed\
           --out ${outPrefix}
 
-done < ${bed%.bed}_unique_ethinicities.txt
+done < ${bed%.bed}_unique_ethnicities.txt

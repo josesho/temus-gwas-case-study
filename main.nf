@@ -33,7 +33,7 @@ process splitByEthnicity {
     path qc_files
 
     output:
-    path "${params.prefix}_qc_ethnicity*.{bed,bim,fam}"
+    path "${params.prefix}_qc_*.{txt,bed,bim,fam}"
 
     shell:
     """
@@ -41,8 +41,26 @@ process splitByEthnicity {
     """
 }
 
+process gwas {
+    tag 'gwas'
+    publishDir 'output'//, mode: 'copy', overwrite: false
+
+    input:
+    path split_files
+
+    output:
+    path "${params.prefix}_qc_gwasResults_ethnicity*"
+
+    shell:
+    """
+    bash !{projectDir}/bin/gwas.sh ${params.prefix} ${split_files[-1]} ${params.phenotypes}
+    """
+}
+
 workflow {
-    qc(params.bed, params.bim, params.fam) | collect | splitByEthnicity
+    qc(params.bed, params.bim, params.fam) | collect \
+        | splitByEthnicity | collect \
+        | gwas
 }
 
 workflow.onError {
@@ -57,45 +75,19 @@ workflow.onComplete {
 
 
 
-/* process gwas {
-    tag 'gwas'
-    input:
-    path genotype_file from split_genotypes
-    path phenotypes
-
-    output:
-    path "gwas_results_*" into gwas_results
-
-    script:
-    """
-    bash bin/gwas.sh ${genotype_file} ${phenotypes}
-    """
-}
-
+/*
 process commonVariants {
     tag 'common_variants'
+
     input:
     path gwas_results.collect()
 
     output:
     path "common_variants.txt"
 
-    script:
+    shell:
     """
     bash bin/common_variants.sh ${gwas_results}
     """
-}
-
-workflow {
-    bed = params.bed
-    bim = params.bim
-    fam = params.fam
-    samples = params.samples
-    phenotypes = params.phenotypes
-
-    qc(bed, bim, fam) \
-        | splitByEthnicity(samples) \
-        | gwas(phenotypes) \
-        | commonVariants()
 }
 */

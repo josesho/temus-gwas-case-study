@@ -4,6 +4,7 @@
 
 import argparse, json
 import pandas as pd
+import numpy as np
 
 parser = argparse.ArgumentParser(description='Identify common variants across GWAS results\
                                               from different ethnicities.')
@@ -16,15 +17,20 @@ parser.add_argument('gwas_assoc', metavar='gwas_assoc',
 
 args = parser.parse_args()
 
-# Gather all the quantitative association results!
+# Gather all the quantitative association results.
 assoc_results = [f for f in
                  [f.strip("[],") for f in args.gwas_assoc]
                  if f.endswith(".qassoc")
                 ]
+
 # # For debug!
 # with open("common_variants.txt", "w", encoding="utf8") as f:
 #     json.dump(assoc_results, f)
 
+
+# Loop through the qassoc files
+# and attach phenotype and ethnicity
+# then combine only those results surviving p-value threshold.
 out_ = []
 
 for filename in assoc_results:
@@ -38,12 +44,11 @@ for filename in assoc_results:
         sep="\s+", engine="python"
     )
 
-
     aa.loc[:, "PHENO"]     = np.repeat(pheno, len(aa))
     aa.loc[:, "ETHNICITY"] = np.repeat(ethnicity, len(aa))
 
-    out_.append(aa[aa.P < args.pval])
+    out_.append(aa[aa.P < args.pval].copy())
 
 out = pd.concat(out_, ignore_index=True)
 
-out.to_csv("common_variants.txt")
+out.to_csv("common_variants.csv")

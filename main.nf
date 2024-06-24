@@ -21,7 +21,7 @@ process qc {
 
     shell:
     """
-    bash !{projectDir}/bin/qc.sh !{bed} !{bim} !{fam}
+    !{params.bashPath} !{projectDir}/bin/qc.sh !{bed} !{bim} !{fam}
     """
 }
 
@@ -37,7 +37,7 @@ process splitByEthnicity {
 
     shell:
     """
-    bash !{projectDir}/bin/split_by_ethnicity.sh !{params.samples} ${qc_files[0]} ${qc_files[1]} ${qc_files[2]}
+    !{params.bashPath} !{projectDir}/bin/split_by_ethnicity.sh !{params.samples} ${qc_files[0]} ${qc_files[1]} ${qc_files[2]}
     """
 }
 
@@ -53,7 +53,7 @@ process gwas {
 
     shell:
     """
-    bash !{projectDir}/bin/gwas.sh ${params.prefix} ${split_files[-1]} ${params.phenotypes}
+    !{params.bashPath} !{projectDir}/bin/gwas.sh ${params.prefix} ${split_files[-1]} ${params.phenotypes}
     """
 }
 
@@ -65,7 +65,7 @@ process commonVariants {
     path gwas_files
 
     output:
-    path "common_variants.txt"
+    path "common_variants.csv"
 
     shell:
     """

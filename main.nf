@@ -49,7 +49,7 @@ process gwas {
     path split_files
 
     output:
-    path "${params.prefix}_qc_gwasResults_ethnicity*"
+    path "${params.prefix}_qc_gwasResults_ethnicity*.{qassoc,log,nosex}"
 
     shell:
     """
@@ -57,10 +57,27 @@ process gwas {
     """
 }
 
+process commonVariants {
+    tag 'common_variants'
+    publishDir 'output'//, mode: 'copy', overwrite: false
+
+    input:
+    path gwas_files
+
+    output:
+    path "common_variants.txt"
+
+    shell:
+    """
+    python !{projectDir}/bin/common_variants.py ${gwas_files}
+    """
+}
+
 workflow {
     qc(params.bed, params.bim, params.fam) | collect \
         | splitByEthnicity | collect \
-        | gwas
+        | gwas | collect \
+        | commonVariants
 }
 
 workflow.onError {
@@ -71,23 +88,3 @@ workflow.onComplete {
     println "Pipeline completed at: $workflow.complete"
     println "Execution status: ${ workflow.success ? 'OK' : 'failed' }"
 }
-
-
-
-
-/*
-process commonVariants {
-    tag 'common_variants'
-
-    input:
-    path gwas_results.collect()
-
-    output:
-    path "common_variants.txt"
-
-    shell:
-    """
-    bash bin/common_variants.sh ${gwas_results}
-    """
-}
-*/

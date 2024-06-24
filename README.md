@@ -7,7 +7,7 @@ This Netxflow pipeline processes genotype data for a GWAS study. It performs qua
 - Nextflow
 - PLINK
 - Bash (with `awk` installed)
-- Python 3.9, with `pandas` installed
+- Python (at least v3.9), with `pandas` installed
 
 ## Setup
 
@@ -22,6 +22,11 @@ This Netxflow pipeline processes genotype data for a GWAS study. It performs qua
       ```
   - On MacOS or Windows
     Select the appropriate binary from the [PLINK site](https://www.cog-genomics.org/plink/).
+
+3. Install Python and required libraries:
+  - Python: https://www.python.org/downloads/
+  - `pandas`: https://pandas.pydata.org/getting_started.html
+    * This will also install `numpy`.
 
 ## Running the Pipeline
 
@@ -42,12 +47,21 @@ This Netxflow pipeline processes genotype data for a GWAS study. It performs qua
     nextflow run main.nf
     ```
 
+3. All output files produced will be found in the output directory:
+    ```
+    output/
+    ├── common_variants.csv
+    ├── 100000_variants_10000_samples_5_chromosomes_qc_gwasResults_ethnicity0.Y1.assoc
+    ├── ...
+    ...
+    ```
+
 ## Pipeline Steps
 
 1. **Quality Control**: Removes individuals and SNPs with high missingness using PLINK.
 2. **Split by Ethnic Groups**: Splits the genotype data based on the ethnic groups in `samples.txt`.
 3. **GWAS**: Conducts GWAS separately for each ethnic group.
-4. **Common Variants**: Identifies common variants across different ethnic groups.
+4. **Common Variants**: Identifies common variants passing a given p-value threshold across different ethnic groups.
 
 ## Customization
 

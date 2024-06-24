@@ -23,11 +23,6 @@ assoc_results = [f for f in
                  if f.endswith(".qassoc")
                 ]
 
-# # For debug!
-# with open("common_variants.txt", "w", encoding="utf8") as f:
-#     json.dump(assoc_results, f)
-
-
 # Loop through the qassoc files
 # and attach phenotype and ethnicity
 # then combine only those results surviving p-value threshold.

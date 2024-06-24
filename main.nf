@@ -69,7 +69,7 @@ process commonVariants {
 
     shell:
     """
-    python !{projectDir}/bin/common_variants.py ${gwas_files}
+    ${params.pythonPath} !{projectDir}/bin/common_variants.py ${params.variantPvalThreshold} ${gwas_files}
     """
 }
 

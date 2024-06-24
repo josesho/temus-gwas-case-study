@@ -4,11 +4,10 @@ This Netxflow pipeline processes genotype data for a GWAS study. It performs qua
 
 ## Requirements
 
-
-
 - Nextflow
 - PLINK
-- Bash
+- Bash (with `awk` installed)
+- Python 3.9, with `pandas` installed
 
 ## Setup
 

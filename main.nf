@@ -21,7 +21,9 @@ process qc {
 
     shell:
     """
-    !{params.bashPath} !{projectDir}/bin/qc.sh !{bed} !{bim} !{fam}
+    !{params.bashPath} !{projectDir}/bin/qc.sh \
+     !{bed} !{bim} !{fam} \
+     !{params.mind_cutoff} !{params.geno_cutoff} !{params.maf_cutoff}
     """
 }
 
@@ -37,7 +39,8 @@ process splitByEthnicity {
 
     shell:
     """
-    !{params.bashPath} !{projectDir}/bin/split_by_ethnicity.sh !{params.samples} ${qc_files[0]} ${qc_files[1]} ${qc_files[2]}
+    !{params.bashPath} !{projectDir}/bin/split_by_ethnicity.sh \
+        !{params.samples} ${qc_files[0]} ${qc_files[1]} ${qc_files[2]}
     """
 }
 

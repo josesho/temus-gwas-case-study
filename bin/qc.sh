@@ -6,11 +6,9 @@
 bed=$1
 bim=$2
 fam=$3
-
-# Assigns all options.
-MIND_CUTOFF=0.05 # Removing samples with missing call rates `--mind`, default 0.1.
-GENO_CUTOFF=0.05 # Removing SNPs with missing call rates, default 0.1.
-MAF_CUTOFF=0.05  # Removing SNPs with minor allele frequency below threshold, default 0.01.
+MIND_CUTOFF=$4
+GENO_CUTOFF=$5
+MAF_CUTOFF=$6
 
 # See https://www.cog-genomics.org/plink/1.9/filter for more options.
 plink --bfile ${bed%.bed}\

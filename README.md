@@ -62,6 +62,7 @@ This Netxflow pipeline processes genotype data for a GWAS study. It performs qua
     For the common variant analysis, please see `common_variants.csv`:
 
     |MARKER|PHENO|ETHNICITY|P
+    |------|-----|---------|--
     |1_6032|Y44; Y77; Y78|1; 1; 3|1.822e-05; 7.25e-05; 9.884e-05
     |2_34571|Y17; Y26|0; 2|3.525e-05; 6.056e-05
     |3_47995|Y28; Y68|1; 3|8.05e-05; 9.661e-05

@@ -6,7 +6,6 @@
 prefix=$1
 ethnicities=$2
 phenotypes=$3
-# ${bed%.bed}_unique_ethnicities.txt
 
 # Reads in text file with a unique ethnicity on each line,
 # Then identifies the relevant bed/bim/bam files

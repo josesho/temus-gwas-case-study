@@ -1,11 +1,11 @@
 # GWAS Nextflow Pipeline
 
-This Netxflow pipeline processes genotype data for a GWAS study. It performs quality control, then splits the data by ethnic groups, conducts GWAS, and identifies common variants.
+This Netxflow pipeline processes genotype data for a GWAS study. It performs quality control, then splits the data by ethnic groups, conducts GWAS, and identifies common variants across ethnicities.
 
 ## Requirements
 
 - Nextflow
-- PLINK
+- PLINK v1.9
 - Bash (with `awk` installed)
 - Python (at least v3.9), with `pandas` installed
 
@@ -31,6 +31,7 @@ This Netxflow pipeline processes genotype data for a GWAS study. It performs qua
 ## Running the Pipeline
 
 1. Prepare your data directory:
+
     ```
     data/
     ├── 100000_variants_10000_samples_5_chromosomes.bed
@@ -48,6 +49,7 @@ This Netxflow pipeline processes genotype data for a GWAS study. It performs qua
     ```
 
 3. All output files produced will be found in the output directory:
+
     ```
     output/
     ├── common_variants.csv
@@ -55,6 +57,20 @@ This Netxflow pipeline processes genotype data for a GWAS study. It performs qua
     ├── ...
     ...
     ```
+    All `.qassoc` files are the output of PLINK.
+
+    For the common variant analysis, please see `common_variants.csv`:
+
+    |MARKER|PHENO|ETHNICITY|P
+    |1_6032|Y44; Y77; Y78|1; 1; 3|1.822e-05; 7.25e-05; 9.884e-05
+    |2_34571|Y17; Y26|0; 2|3.525e-05; 6.056e-05
+    |3_47995|Y28; Y68|1; 3|8.05e-05; 9.661e-05
+
+    Each row consists of the following fields:
+    - MARKER: The marker in `chr_snp` format.
+    - PHENO: A list of phenotypes that have significant assocation at the given marker, seperated by semicolons.
+    - ETHNICITIES: The list of ethnicities, corresponding to the phenotypes in PHENO, for which there is significant association at the given MARKER.
+    - P: The assocation p-value, again respectively in the same order as PHENO and ETHNICITIES.
 
 ## Pipeline Steps
 

@@ -21,7 +21,7 @@ This Netxflow pipeline processes genotype data for a GWAS study. It performs qua
       sudo apt-get install plink
       ```
   - On MacOS or Windows
-    Select the appropriate binary from the [PLINK site](https://www.cog-genomics.org/plink/).
+    - Select the appropriate binary from the [PLINK site](https://www.cog-genomics.org/plink/).
 
 3. Install Python and required libraries:
   - Python: https://www.python.org/downloads/

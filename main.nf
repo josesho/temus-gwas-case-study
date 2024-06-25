@@ -1,5 +1,4 @@
 #!/Users/josesho/bin nextflow
-//change to #!/usr/bin/env nextflow before commit
 
 /*
 Written by Joses Ho, 22 June 2024.

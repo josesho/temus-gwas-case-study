@@ -45,7 +45,7 @@ This Netxflow pipeline processes genotype data for a GWAS study. It performs qua
 
 2. Execute the pipeline:
     ```bash
-    nextflow run main.nf
+    nextflow run main.nf -with-report -with-trace -with-timeline
     ```
 
 3. All output files produced will be found in the output directory:
@@ -83,6 +83,34 @@ This Netxflow pipeline processes genotype data for a GWAS study. It performs qua
 ## Customization
 
 You can customize parameters in the `nextflow.config` file as needed.
+
+```groovy
+params {
+    // QC parameters
+    // Removing samples with missing call rates greater the value, default 0.1.
+    mind_cutoff = 0.05
+    // Removing SNPs with missing call rates greater the value, default 0.1.
+    geno_cutoff = 0.05
+    // Removing SNPs with minor allele frequency below threshold, default 0.01.
+    maf_cutoff  = 0.05
+    // Common Variant Analysis:
+    // Any variant with an association P-value below this threshold
+    // will be considered "significant".
+    variantPvalThreshold = 1e-4
+    // Paths for bash and python executables.
+    bashPath   = "/bin/bash"
+    pythonPath = "/Users/josesho/miniforge3/bin/python"
+    // Paths for data files.
+    dataFolder = "$projectDir/data/"
+    outdir     = "$projectDir/output"
+    prefix     = "100000_variants_10000_samples_5_chromosomes"
+    bed        = dataFolder + prefix + ".bed"
+    bim        = dataFolder + prefix + ".bim"
+    fam        = dataFolder + prefix + ".fam"
+    samples    = dataFolder + "samples.txt"
+    phenotypes = dataFolder + "phenotype_10000_samples_100cols.txt"
+}
+```
 
 ## Troubleshooting
 
